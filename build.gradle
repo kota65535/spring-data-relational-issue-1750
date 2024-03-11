@@ -1,0 +1,34 @@
+plugins {
+    id "java"
+    id "org.springframework.boot"
+    id "io.freefair.lombok"
+}
+
+group = "com.kota65535"
+sourceCompatibility = "17"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot BOM
+    implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+    // Spring
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-data-jdbc"
+
+    // MySQL
+    runtimeOnly "mysql:mysql-connector-java:8.0.33"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.springframework.data:spring-data-jdbc:3.2.3"
+    testImplementation "org.junit.jupiter:junit-jupiter:5.9.3"
+
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
